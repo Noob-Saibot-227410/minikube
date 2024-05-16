@@ -61,6 +61,17 @@ sudo snap install kubectl --classic
 
 
 
-# sudo apt-get install docker-ce=18.06.3~ce~3-0~debian
+Baixe o pacote Docker CE para a arquitetura i386 e a distribuição Debian:
+
+sh
+Copiar código
+wget https://download.docker.com/linux/debian/dists/stretch/pool/stable/i386/docker-ce_18.09.1~3-0~debian-stretch_i386.deb
+Certifique-se de substituir 18.09.1~3-0~debian-stretch pela versão específica que você deseja baixar.
+
+Instale o pacote baixado:
+
+sh
+Copiar código
+sudo dpkg -i docker-ce_18.09.1~3-0~debian-stretch_i386.deb
 
 
