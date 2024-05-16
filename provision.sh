@@ -30,48 +30,34 @@ sudo snap install kubectl --classic
 
 
 
+Para instalar o Docker Engine em um sistema Debian de 32 bits, você pode seguir as instruções fornecidas pelo Docker. No entanto, é importante observar que o Docker Engine não oferece suporte oficial para arquiteturas de 32 bits. Portanto, pode ser difícil encontrar uma versão compatível do Docker Engine para o seu sistema. Aqui está um resumo das etapas que você pode tentar:
 
-# Adicione o repositório de terceiros:
-
-# Crie um arquivo para adicionar o repositório:
-# sh
-# Copiar código
-# sudo nano /etc/apt/sources.list.d/docker.list
-# Adicione o seguinte conteúdo ao arquivo:
-# bash
-# Copiar código
-# deb [arch=i386] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
-# Salve e feche o arquivo.
-# Importe a chave GPG do repositório:
-
-# sh
-# Copiar código
-# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# Atualize o índice de pacotes e instale o Docker:
-
-# sh
-# Copiar código
-# sudo apt-get update
-# sudo apt-get install docker-ce
-# Habilite o serviço do Docker:
-
-# sh
-# Copiar código
-# sudo systemctl enable docker
-
-
-
-Baixe o pacote Docker CE para a arquitetura i386 e a distribuição Debian:
+Remova pacotes conflitantes: Antes de instalar o Docker Engine, remova quaisquer pacotes conflitantes que possam estar presentes no seu sistema. Você pode usar o seguinte comando para fazer isso:
 
 sh
 Copiar código
-wget https://download.docker.com/linux/debian/dists/stretch/pool/stable/i386/docker-ce_18.09.1~3-0~debian-stretch_i386.deb
-Certifique-se de substituir 18.09.1~3-0~debian-stretch pela versão específica que você deseja baixar.
-
-Instale o pacote baixado:
+sudo apt-get remove docker docker-engine docker.io containerd runc
+Adicione o repositório do Docker: Adicione o repositório do Docker ao seu sistema Debian:
 
 sh
 Copiar código
-sudo dpkg -i docker-ce_18.09.1~3-0~debian-stretch_i386.deb
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+Observe que mesmo que a arquitetura seja especificada como amd64, você pode tentar usar este repositório para ver se ele contém uma versão do Docker Engine que possa ser instalada em uma arquitetura de 32 bits.
 
+Instale o Docker Engine: Agora, você pode instalar o Docker Engine com o seguinte comando:
 
+sh
+Copiar código
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+Isso instalará o Docker Engine, o Docker CLI e o containerd.
+
+Verifique a instalação: Verifique se o Docker Engine foi instalado corretamente executando o seguinte comando:
+
+sh
+Copiar código
+sudo docker --version
+Por favor, note que não há garantia de que o Docker Engine funcionará corretamente em uma arquitetura de 32 bits e pode ser necessário buscar alternativas, como usar uma versão mais antiga do Docker ou procurar por soluções de terceiros.
