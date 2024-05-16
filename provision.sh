@@ -61,5 +61,6 @@ sudo snap install kubectl --classic
 
 
 
-# sudo apt-get install docker-ce=5:18.09.1~3-0~debian-stretch
+# sudo apt-get install docker-ce=18.06.3~ce~3-0~debian
+
 
