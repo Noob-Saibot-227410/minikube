@@ -25,3 +25,36 @@ minikube start --driver=docker
 ########################
 echo "Installing kubectl via Snap"
 sudo snap install kubectl --classic
+
+
+
+
+
+
+# Adicione o repositório de terceiros:
+
+# Crie um arquivo para adicionar o repositório:
+# sh
+# Copiar código
+# sudo nano /etc/apt/sources.list.d/docker.list
+# Adicione o seguinte conteúdo ao arquivo:
+# bash
+# Copiar código
+# deb [arch=i386] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+# Salve e feche o arquivo.
+# Importe a chave GPG do repositório:
+
+# sh
+# Copiar código
+# curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# Atualize o índice de pacotes e instale o Docker:
+
+# sh
+# Copiar código
+# sudo apt-get update
+# sudo apt-get install docker-ce
+# Habilite o serviço do Docker:
+
+# sh
+# Copiar código
+# sudo systemctl enable docker
