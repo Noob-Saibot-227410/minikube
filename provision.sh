@@ -61,3 +61,8 @@ sh
 Copiar código
 sudo docker --version
 Por favor, note que não há garantia de que o Docker Engine funcionará corretamente em uma arquitetura de 32 bits e pode ser necessário buscar alternativas, como usar uma versão mais antiga do Docker ou procurar por soluções de terceiros.
+
+
+
+wget https://download.docker.com/linux/debian/dists/stretch/pool/stable/i386/docker-ce_18.06.3~ce~3-0~debian_i386.deb
+sudo dpkg -i docker-ce_18.06.3~ce~3-0~debian_i386.deb
